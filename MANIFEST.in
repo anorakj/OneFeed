@@ -1,0 +1,2 @@
+recursive-include onefeed/app/templates *
+recursive-include onefeed/app/static *

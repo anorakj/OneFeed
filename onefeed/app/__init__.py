@@ -1,17 +1,19 @@
 # -*- coding: utf-8 -*-
 
 import csv
+import os
 
 from flask import Flask
 from flask import jsonify
 from flask import render_template
 
-import os
+from onefeed import config
 
 
 def create_app():
-    app = Flask(__name__, template_folder="templates", static_folder="static", static_url_path='')
-    app.config.from_object('config')
+    basedir = os.path.dirname(os.path.abspath(__file__))
+    app = Flask(__name__, template_folder="{}/templates".format(basedir), static_folder="{}/static".format(basedir), static_url_path='')
+    app.config.from_object(config)
 
     @app.route('/')
     def index():

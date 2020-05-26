@@ -141,4 +141,4 @@ cython_debug/
 .idea/*
 
 # data file
-onefeed/data/*
+onefeed_data/*
