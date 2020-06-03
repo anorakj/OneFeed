@@ -12,3 +12,4 @@ class TrendingItem(scrapy.Item):
     language = scrapy.Field()
     description = scrapy.Field(serializer=strip_serializer)
     star = scrapy.Field(serializer=strip_serializer)
+    source = scrapy.Field()
