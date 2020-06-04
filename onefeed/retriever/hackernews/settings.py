@@ -7,4 +7,3 @@ ITEM_PIPELINES = {
 }
 ROBOTSTXT_OBEY = False
 DB = 'onefeed_data/onefeed.db'
-PROXY = 'http://127.0.0.1:1087'
