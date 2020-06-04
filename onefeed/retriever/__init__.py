@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import os
-from .db import init_database
+from importlib import import_module
+import pkgutil
 
-if not os.path.exists('./onefeed_data'):
-    os.mkdir('./onefeed_data')
-    init_database()
+retriever_settings = {}
+for module in pkgutil.walk_packages(__path__, prefix='onefeed.retriever.'):
+    if module.name.endswith('settings'):
+        imported_module = import_module(module.name)
+        retriever_settings[module.name] = imported_module.__file__

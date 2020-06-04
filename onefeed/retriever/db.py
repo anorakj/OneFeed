@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
+import os
 import sqlite3
 
 from .sql import CREATE_TABLE
 
-DB = 'onefeed_data/onefeed.db'
+DB = '{}/onefeed_data/onefeed.db'.format(os.getcwd())
 '''str: default onefeed DB path'''
 
 
@@ -13,6 +14,7 @@ def init_database(database=DB):
 
     :param database: path of the sqlite database
     """
+    print('Init onefeed database in {}'.format(DB))
     with sqlite3.connect(database) as conn:
         conn.execute(CREATE_TABLE)
 
