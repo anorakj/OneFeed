@@ -6,7 +6,7 @@ import scrapy
 
 
 class HomepageSpider(scrapy.Spider):
-    name = 'homepage'
+    name = 'hackernews homepage'
     allowed_domains = ['news.ycombinator.com']
 
     def start_requests(self):

@@ -4,10 +4,7 @@ import os
 import shutil
 from .retriever.db import init_database, DB
 from .retriever import retriever_settings
-
-ONEFEED_DATA_PATH = '{}/onefeed_data'.format(os.getcwd())
-CUSTOM_CONFIG = '{}/config'.format(ONEFEED_DATA_PATH)
-
+from .constants import ONEFEED_DATA_PATH, CUSTOM_CONFIG_PATH
 
 def init_config(config_path):
     print('Init custom config in {}'.format(config_path))
@@ -19,5 +16,5 @@ def init_config(config_path):
 
 if not os.path.exists(ONEFEED_DATA_PATH):
     os.mkdir(ONEFEED_DATA_PATH)
-    init_config(CUSTOM_CONFIG)
+    init_config(CUSTOM_CONFIG_PATH)
     init_database(DB)

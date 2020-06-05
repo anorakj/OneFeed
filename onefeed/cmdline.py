@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
-import click
-import pathlib
 
-from scrapy.crawler import CrawlerProcess
+import click
 
 from onefeed.app import create_app
-from onefeed.retriever.github.github.spiders.trending import TrendingSpider
+from onefeed.retriever import fetch_once
 
 
 @click.group()
@@ -21,11 +19,7 @@ def start():
 
 @cli.command()
 def fetch():
-    process = CrawlerProcess(settings={'FEEDS': {
-        pathlib.Path('onefeed_data/github_items.csv'): {'format': 'csv'}
-    }, })
-    process.crawl(TrendingSpider)
-    process.start()
+    fetch_once()
 
 
 if __name__ == '__main__':

@@ -6,7 +6,7 @@ import scrapy
 
 
 class TrendingSpider(scrapy.Spider):
-    name = 'trending'
+    name = 'github trending'
     allowed_domains = ['github.com']
     start_urls = ['https://github.com/trending']
 
