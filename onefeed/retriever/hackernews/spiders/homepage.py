@@ -10,7 +10,8 @@ class HomepageSpider(scrapy.Spider):
     allowed_domains = ['news.ycombinator.com']
 
     def start_requests(self):
-        return [scrapy.Request("https://news.ycombinator.com/news", meta={'proxy': self.settings.get('PROXY')})]
+        meta = {'proxy': self.settings.get('PROXY')} if self.settings.get('PROXY') else None
+        return [scrapy.Request("https://news.ycombinator.com/news", meta=meta)]
 
     def parse(self, response):
         itemlists = response.xpath('//table[@class="itemlist"]/tr')
