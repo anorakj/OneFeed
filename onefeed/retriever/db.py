@@ -1,31 +1,29 @@
 # -*- coding: utf-8 -*-
 
-import os
 import sqlite3
 
-from .sql import CREATE_TABLE
-
-DB = '{}/onefeed_data/onefeed.db'.format(os.getcwd())
-'''str: default onefeed DB path'''
+from .sql import SCHEMA
+from ..constants import DB
 
 
-def init_database(database=DB):
+def init_db(db_path=DB):
     """init sqlite database and create feed table
 
-    :param database: path of the sqlite database
+    :param db_path: path of the sqlite database
     """
-    print('Init onefeed database in {}'.format(DB))
-    with sqlite3.connect(database) as conn:
-        conn.execute(CREATE_TABLE)
+    db = get_db(db_path)
+    db.executescript(SCHEMA)
+    db.close()
+    print('Init onefeed database in {}'.format(db_path))
 
 
-def get_conn(database=DB):
+def get_db(db_path=DB):
     """get sqlite db connection with autocommit
 
-    :param database: path of the sqlite database
-    :type database: str
+    :param db_path: path of the sqlite database
+    :type db_path: str
 
-    :return: db connection.
+    :return: db_path connection.
     :rtype: sqlite3.Connection
     """
-    return sqlite3.connect(database, isolation_level=None)
+    return sqlite3.connect(db_path, isolation_level=None)

@@ -2,11 +2,12 @@
 
 import tempfile
 
-from onefeed.retriever.db import init_database, get_conn
+from onefeed.retriever.db import init_db, get_db
 
 
-def test_db():
+def test_schema():
     temp_db = tempfile.mktemp()
-    init_database(temp_db)
-    conn = get_conn(temp_db)
-    assert conn.execute("SELECT count(*) FROM sqlite_master WHERE type='table' AND name='feeds'").fetchone()[0] == 1
+    init_db(temp_db)
+    db = get_db(temp_db)
+    assert db.execute("SELECT count(*) FROM sqlite_master WHERE type='table' AND name='store'").fetchone()[0] == 1
+    assert db.execute("SELECT count(*) FROM sqlite_master WHERE type='table' AND name='sync'").fetchone()[0] == 1

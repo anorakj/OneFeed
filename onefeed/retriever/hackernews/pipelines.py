@@ -3,7 +3,7 @@
 import json
 import time
 
-from ..db import get_conn
+from ..db import get_db
 from ..sql import INSERT_FEED
 
 
@@ -18,7 +18,7 @@ class SqlitePipeline:
         return cls(settings.get('DB'))
 
     def open_spider(self, spider):
-        self.conn = get_conn(self.db)
+        self.conn = get_db(self.db)
 
     def close_spider(self, spider):
         self.conn.close()

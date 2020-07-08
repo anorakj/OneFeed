@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 
-CREATE_TABLE = """CREATE TABLE IF NOT EXISTS feeds 
-(feed_id INTEGER PRIMARY KEY, feed_info BLOB, create_time INTEGER, update_time INTEGER)"""
+SCHEMA = """CREATE TABLE IF NOT EXISTS store 
+(message_id INTEGER PRIMARY KEY, message_info BLOB, create_time INTEGER, update_time INTEGER);
+CREATE TABLE IF NOT EXISTS sync
+(message_id INTEGER PRIMARY KEY, create_time INTEGER, update_time INTEGER);"""
 
-INSERT_FEED = """INSERT INTO feeds (feed_info, create_time, update_time) VALUES (?, ?, ?)"""
+INSERT_STORE = """INSERT INTO store(message_id, message_info, create_time, update_time) VALUES (?, ?, ?, ?)"""
+INSERT_SYNC = """INSERT INTO sync(message_id, message_info, create_time, update_time) VALUES(?. ?, ?. ?)"""
