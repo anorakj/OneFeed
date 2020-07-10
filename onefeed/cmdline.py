@@ -2,7 +2,7 @@
 
 import click
 
-from onefeed.app import create_app
+from onefeed.app import app
 from onefeed.retriever import fetch_once, fetch_job
 
 
@@ -13,7 +13,6 @@ def cli():
 
 @cli.command()
 def start():
-    app = create_app()
     app.run(host='localhost', port=9487)
 
 
