@@ -11,6 +11,7 @@ from onefeed.retriever.github import TrendingSpider
 from onefeed.retriever.hackernews import HomepageSpider
 from onefeed.retriever.sql import SCHEMA
 from onefeed.retriever.db import get_db
+from onefeed.retriever import fetch_job
 
 
 def crawler_func(spider, settings):

@@ -9,3 +9,4 @@ ROBOTSTXT_OBEY = False
 DB = 'onefeed_data/onefeed.db'
 FORCED_TIMEOUT = 10
 LOG_LEVEL = 'ERROR'
+SCHEDULE_TIME = '10:15'
