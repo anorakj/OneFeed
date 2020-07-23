@@ -6,7 +6,7 @@ import sys
 from importlib import import_module
 import pkgutil
 
-from onefeed.constants import CUSTOM_CONFIG_PATH
+from onefeed.config import CUSTOM_CONFIG_PATH
 
 
 def get_spiders():

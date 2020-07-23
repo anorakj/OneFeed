@@ -4,7 +4,7 @@ import os
 import shutil
 from .retriever.db import init_db, DB
 from .retriever import retriever_settings
-from .constants import ONEFEED_DATA_PATH, CUSTOM_CONFIG_PATH
+from .config import ONEFEED_DATA_PATH, CUSTOM_CONFIG_PATH
 
 
 def init_config(config_path):

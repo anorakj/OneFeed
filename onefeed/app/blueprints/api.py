@@ -43,7 +43,7 @@ def get_hackernews_items():
             'title': message['title'],
             'points': message['points'],
             'comments': message['comments'],
-            'source_website': message['source_website'],
+            'link': message['link'],
         })
     ids = [str(v['id']) for v in items]
     db.execute(DELETE_MESSAGE.format(message_ids=','.join(ids)))

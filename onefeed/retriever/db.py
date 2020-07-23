@@ -3,7 +3,7 @@
 import sqlite3
 
 from .sql import SCHEMA
-from ..constants import DB
+from ..config import DB
 
 
 def init_db(db_path=DB):
