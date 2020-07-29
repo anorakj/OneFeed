@@ -2,7 +2,7 @@
 
 import json
 
-from flask import Blueprint, jsonify
+from flask import Blueprint, current_app, jsonify
 
 from ..db import get_db
 from ..sql import GET_MESSAGE, DELETE_MESSAGE
@@ -25,8 +25,7 @@ def get_github_items():
             'star': message['star'],
             'language': message['language'],
         })
-    ids = [str(v['id']) for v in items]
-    db.execute(DELETE_MESSAGE.format(message_ids=','.join(ids)))
+    db.execute(DELETE_MESSAGE, (current_app.config['MAX_FEED_NUM'],))
     return jsonify(items)
 
 
@@ -45,6 +44,5 @@ def get_hackernews_items():
             'comments': message['comments'],
             'link': message['link'],
         })
-    ids = [str(v['id']) for v in items]
-    db.execute(DELETE_MESSAGE.format(message_ids=','.join(ids)))
+    db.execute(DELETE_MESSAGE, (current_app.config['MAX_FEED_NUM'],))
     return jsonify(items)

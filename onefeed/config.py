@@ -7,3 +7,5 @@ CUSTOM_CONFIG_PATH = '{}/config'.format(ONEFEED_DATA_PATH)
 
 DB = '{}/onefeed.db'.format(ONEFEED_DATA_PATH)
 '''str: default store DB path'''
+MAX_FEED_NUM = 50
+
