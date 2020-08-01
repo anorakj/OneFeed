@@ -3,7 +3,7 @@
 from importlib import import_module
 import pkgutil
 
-from .scheduler import fetch_once, fetch_job
+from .retriever import fetch_once
 
 retriever_settings = {}
 for module in pkgutil.walk_packages(__path__, prefix='onefeed.retriever.'):

@@ -5,6 +5,7 @@ import json
 from flask import Blueprint, current_app, jsonify
 
 from ..db import get_db
+from onefeed.retriever import fetch_once
 from ..sql import GET_MESSAGE, DELETE_MESSAGE
 
 api = Blueprint('api', __name__, url_prefix='/api')
@@ -46,3 +47,9 @@ def get_hackernews_items():
         })
     db.execute(DELETE_MESSAGE, (current_app.config['MAX_FEED_NUM'],))
     return jsonify(items)
+
+
+@api.route('/crawler/fetch', methods=['POST'])
+def fetch():
+    fetch_once()
+    return jsonify({})
