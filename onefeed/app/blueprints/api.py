@@ -26,7 +26,7 @@ def get_github_items():
             'star': message['star'],
             'language': message['language'],
         })
-    db.execute(DELETE_MESSAGE, (current_app.config['MAX_FEED_NUM'],))
+    db.execute(DELETE_MESSAGE, ('github_trending', current_app.config['MAX_FEED_NUM'],))
     return jsonify(items)
 
 
@@ -45,7 +45,7 @@ def get_hackernews_items():
             'comments': message['comments'],
             'link': message['link'],
         })
-    db.execute(DELETE_MESSAGE, (current_app.config['MAX_FEED_NUM'],))
+    db.execute(DELETE_MESSAGE, ('hackernews_homepage', current_app.config['MAX_FEED_NUM'],))
     return jsonify(items)
 
 

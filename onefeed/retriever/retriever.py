@@ -18,5 +18,5 @@ def fetch_once():
         default_setting.update(setting)
         crawler_runner = CrawlerRunner(default_setting)
         d_list.append(crawler_runner.crawl(spider))
-    d = defer.DeferredList(d_list).addBoth(lambda _: print('all finished'))
+    d = defer.DeferredList(d_list)
     return d
