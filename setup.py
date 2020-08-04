@@ -30,6 +30,7 @@ requires = [
     'Scrapy>=2.1.0',
     'Flask>=1.1.2',
     'pyasn1',
+    'crochet',
 ]
 
 about = {}
