@@ -4,6 +4,7 @@ import scrapy
 
 
 class HomepageItem(scrapy.Item):
+    title = scrapy.Field()
     points = scrapy.Field()
     comments = scrapy.Field()
     link = scrapy.Field()
