@@ -2,9 +2,14 @@
 
 import os
 import shutil
+import sqlite3
+
 from .retriever.db import init_db, DB
 from .retriever import retriever_settings
 from .config import ONEFEED_DATA_PATH, CUSTOM_CONFIG_PATH
+
+if sqlite3.sqlite_version < '3.25.0':
+    raise Exception('You need sqlite version >=3.25.0 to make this package work')
 
 
 def init_config(config_path):

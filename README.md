@@ -9,6 +9,6 @@ pip install onefeed
 
 ## Usage
 ```shell script
-onefeed fetch # crawl the info
+onefeed fetch # crawl the info, or you can just skip this since the servier will fetch automatically
 onefeed start # start the server
 ```

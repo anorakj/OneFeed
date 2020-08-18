@@ -21,7 +21,6 @@ class ArticlesSpider(scrapy.Spider):
         for article in response.json()['data']:
             item = ArticlesItem()
             item['title'] = article['article_title']
-            print(item['title'])
             item['link'] = "https://www.infoq.cn/article/{}".format(article['uuid'])
             item['description'] = article['article_summary']
             item['source'] = 'infoq_articles'
