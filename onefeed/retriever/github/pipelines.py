@@ -14,7 +14,7 @@ class SqlitePipeline:
 
     def close_spider(self, spider):
         self.db.close()
-        print('finish github')
+        print('finish crawling github')
 
     def process_item(self, item, spider):
         message_info = json.dumps(dict(item)).encode('utf-8')

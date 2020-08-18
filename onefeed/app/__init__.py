@@ -1,11 +1,19 @@
 # -*- coding: utf-8 -*-
 
+import logging
 import os
+import sys
 
 from flask import Flask, g
 
 from .blueprints import blueprints
 from .. import config
+
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
+
+cli = sys.modules['flask.cli']
+cli.show_server_banner = lambda *x: None
 
 
 def register_blueprints(app):

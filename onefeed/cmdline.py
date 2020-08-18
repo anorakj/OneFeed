@@ -13,6 +13,7 @@ def cli():
 
 @cli.command()
 def start():
+    print('Onefeed Start!')
     app.run(host='localhost', port=9487)
 
 
