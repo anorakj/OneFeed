@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import sys
 
 from scrapy.crawler import CrawlerRunner
 from scrapy.utils.project import get_project_settings
@@ -7,7 +8,8 @@ from crochet import setup, wait_for
 
 from .utils import get_spiders
 
-setup()
+if not sys.argv[0] in ['crawl', 'shell']:  # when debugging scrapy
+    setup()
 
 
 @wait_for(timeout=60)
