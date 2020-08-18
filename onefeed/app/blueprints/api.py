@@ -17,7 +17,6 @@ def get_github_items():
     db = get_db()
     results = db.execute(GET_MESSAGE, ('github_trending',)).fetchall()
     for result in results:
-        print(result)
         message, id = json.loads(result['message_info']), result['id']
         items.append({
             'id': id,
@@ -36,7 +35,6 @@ def get_hackernews_items():
     db = get_db()
     results = db.execute(GET_MESSAGE, ('hackernews_homepage',)).fetchall()
     for result in results:
-        print(result)
         message, id = json.loads(result['message_info']), result['id']
         items.append({
             'id': id,
@@ -46,6 +44,23 @@ def get_hackernews_items():
             'link': message['link'],
         })
     db.execute(DELETE_MESSAGE, ('hackernews_homepage', current_app.config['MAX_FEED_NUM'],))
+    return jsonify(items)
+
+
+@api.route('/items/infoq', methods=['GET', 'POST'])
+def get_infoq_items():
+    items = []
+    db = get_db()
+    results = db.execute(GET_MESSAGE, ('infoq_articles',)).fetchall()
+    for result in results:
+        message, id = json.loads(result['message_info']), result['id']
+        items.append({
+            'id': id,
+            'title': message['title'],
+            'description': message['description'],
+            'link': message['link'],
+        })
+    db.execute(DELETE_MESSAGE, ('infoq_articles', current_app.config['MAX_FEED_NUM'],))
     return jsonify(items)
 
 
