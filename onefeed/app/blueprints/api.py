@@ -5,7 +5,7 @@ import json
 from flask import Blueprint, current_app, jsonify
 
 from ..db import get_db
-from onefeed.retriever import fetch_once
+from ...retriever import fetch_once
 from ..sql import GET_MESSAGE, DELETE_MESSAGE
 
 api = Blueprint('api', __name__, url_prefix='/api')

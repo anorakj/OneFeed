@@ -5,7 +5,7 @@ import os
 from flask import Flask, g
 
 from .blueprints import blueprints
-from onefeed import config
+from .. import config
 
 
 def register_blueprints(app):
