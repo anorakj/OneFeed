@@ -13,9 +13,9 @@ class HomepageSpider(scrapy.Spider):
         meta = {'proxy': self.settings.get('PROXY')} if self.settings.get('PROXY') else None
         return [scrapy.Request("https://news.ycombinator.com/news", meta=meta)]
 
-    def parse(self, response):
+    def parse(self, response, **kwargs):
         itemlists = response.xpath('//table[@class="itemlist"]/tr')
-        for i in range(0, len(itemlists) - 2, 3):
+        for i in reversed(range(0, len(itemlists) - 2, 3)):
             item = HomepageItem()
             content = itemlists[i]
             subtext = itemlists[i + 1]

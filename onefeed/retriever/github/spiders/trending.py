@@ -10,8 +10,8 @@ class TrendingSpider(scrapy.Spider):
     allowed_domains = ['github.com']
     start_urls = ['https://github.com/trending']
 
-    def parse(self, response):
-        for box in response.xpath('//article[@class="Box-row"]'):
+    def parse(self, response, **kwargs):
+        for box in reversed(response.xpath('//article[@class="Box-row"]')):
             item = TrendingItem()
             item['repository'] = box.xpath('./h1/a/@href').get()
             item['title'] = item['repository']

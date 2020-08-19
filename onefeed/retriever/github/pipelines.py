@@ -18,7 +18,7 @@ class SqlitePipeline:
 
     def process_item(self, item, spider):
         message_info = json.dumps(dict(item)).encode('utf-8')
-        timestamp = int(time.time())
+        timestamp = int(time.time() * 1000)
         cursor = self.db.cursor()
         cursor.execute(INSERT_STORE, (message_info, timestamp, timestamp))
         cursor.execute(INSERT_SYNC, (cursor.lastrowid, timestamp, timestamp))
