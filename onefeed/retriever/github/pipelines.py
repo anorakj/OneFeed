@@ -9,8 +9,14 @@ from ..sql import INSERT_STORE, INSERT_SYNC
 
 class SqlitePipeline:
 
-    def __init__(self):
-        self.db = get_db()
+    def __init__(self, db):
+        self.db = get_db(db)
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        settings = crawler.settings
+        db = settings.get("DB")
+        return cls(db)
 
     def close_spider(self, spider):
         self.db.close()

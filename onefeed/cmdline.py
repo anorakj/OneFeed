@@ -33,8 +33,10 @@ def start():
 
 
 @cli.command()
-def fetch():
-    fetch_once()
+@click.argument('spiders', nargs=-1)
+def fetch(spiders):
+    spiders = {s: {} for s in spiders}
+    fetch_once(spiders)
 
 
 if __name__ == '__main__':
