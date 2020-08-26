@@ -27,5 +27,4 @@ def init_config(config_path):
 if not os.path.exists(ONEFEED_DATA_PATH):
     os.mkdir(ONEFEED_DATA_PATH)
 init_config(CUSTOM_CONFIG_PATH)
-if not os.path.exists(DB):
-    init_db(DB)
+init_db(DB)

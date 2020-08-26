@@ -11,3 +11,4 @@ def test_schema():
     db = get_db(temp_db)
     assert db.execute("SELECT count(*) as cnt FROM sqlite_master WHERE type='table' AND name='store'").fetchone()['cnt'] == 1
     assert db.execute("SELECT count(*) as cnt FROM sqlite_master WHERE type='table' AND name='sync'").fetchone()['cnt'] == 1
+    assert db.execute("SELECT count(*) as cnt FROM sqlite_master WHERE type='table' AND name='favorite'").fetchone()['cnt'] == 1

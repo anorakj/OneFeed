@@ -18,3 +18,10 @@ DELETE_MESSAGE = """DELETE FROM sync
                     FROM sync JOIN store ON sync.message_id = store.id 
                     WHERE json_extract(store.message_info, '$.source') = ?) WHERE r > ?)
                  """
+
+INSERT_FAVORITES = """INSERT INTO favorite(message_id, message_info, create_time, update_time) 
+                      SELECT id, message_info, ?, ? FROM store WHERE id = ?
+                   """
+
+GET_FAVORITES = """SELECT id, message_info FROM favorite ORDER BY update_time desc
+                   """
