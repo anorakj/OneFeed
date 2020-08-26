@@ -3,13 +3,14 @@
 import json
 import time
 
-from ..db import get_db
+from ..db import get_db, DB
 from ..sql import INSERT_STORE, INSERT_SYNC
 
 
 class SqlitePipeline:
 
     def __init__(self, db):
+        db = DB if not db else db
         self.db = get_db(db)
 
     @classmethod

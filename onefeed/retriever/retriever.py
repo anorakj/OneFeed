@@ -29,7 +29,6 @@ def fetch_once(spiders=None):
         spiders = [(k, v) for k, v in get_spiders().items() if k.name in spiders]
         for k, v in spiders:
             v.update(temp_spiders[k.name])
-            print(temp_spiders[k.name])
     d_list = []
     for spider, setting in spiders:
         default_setting = get_project_settings()

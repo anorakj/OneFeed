@@ -9,6 +9,7 @@ def strip_serializer(value):
 
 class TrendingItem(scrapy.Item):
     title = scrapy.Field()
+    link = scrapy.Field()
     repository = scrapy.Field()
     language = scrapy.Field()
     description = scrapy.Field(serializer=strip_serializer)

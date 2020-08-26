@@ -50,6 +50,7 @@ def get_github_items():
             'description': message['description'],
             'star': message['star'],
             'language': message['language'],
+            'link': message.get('link', ''),
         })
     return jsonify(items)
 
