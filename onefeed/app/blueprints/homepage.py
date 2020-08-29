@@ -6,7 +6,7 @@ from flask import Blueprint, render_template
 homepage = Blueprint('index', __name__)
 
 
-@homepage.route('/', defaults={'path': '', 'subpath': ''})
-@homepage.route('/<path:path>/<path:subpath>')
-def index(path, subpath):
+@homepage.route('/', defaults={'subpath': ''})
+@homepage.route('/tech-news/<path:subpath>')
+def index(subpath):
     return render_template('index.html')

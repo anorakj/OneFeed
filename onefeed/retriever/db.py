@@ -12,7 +12,11 @@ def init_db(db_path=DB):
     :param db_path: path of the sqlite database
     """
     db = get_db(db_path)
-    db.executescript(SCHEMA)
+    try:
+        db.executescript(SCHEMA)
+    except sqlite3.OperationalError:
+        # for compatibility with early version
+        pass
     db.commit()
     db.close()
     print('Init onefeed database in {}'.format(db_path))
